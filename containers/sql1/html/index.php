@@ -1,31 +1,24 @@
-<?php $link = mysql_connect('localhost', 'root'); ?>
+<?php $link = mysql_connect('localhost', 'root', ""); ?>
 <html>
 <head>
 <title>SQL 1</title>
 </head>
 <body>
-    <?php if(!$link) {
+<?php 
+    if(!$link) {
         echo "<h2>Can't connect to local MySQL Server!</h2>";
     }
+    mysql_select_db('mysql') or die('Failed switching databases');
 
     if (!empty($_POST)) {
-        if (!mysql_select_db('mysql', $link)){
-            echo 'Could not find database';
-        }
-
-        $sql = 'SELECT count(*) as count FROM sql1 WHERE username = "' . $_POST['username'] . '" and password = "' . $_POST['password'] . '"';
-        $sql = 'SELECT 1 from sql1';
+       $sql = "SELECT * FROM sql1 WHERE username='" . $_POST['username'] . "' and password='" . $_POST['password'] . "'";
         echo $sql . '<br/>';
-        $result = mysql_query($sql, $link);
-        echo $result . '<br/>';
-        $row = mysql_fetch_object($result);
-        echo $row . '<br/>';;
-        if ($row == '1'){
-            echo "FLAGBITCH";
-        } else {
-            echo "Wrong Username/Password combination";
+        if ($result = mysql_query($sql) === FALSE){
+            echo 'Query Failed';
         }
-        echo $row->total_count;
+        echo "<table>\n";
+        echo $line = mysql_num_rows($result);
+        echo "</table>\n";
     } else { ?>
 
         <form action="" method="POST">
@@ -36,6 +29,6 @@
             <input type="submit" name="submit" value="login"/>
         </form>
 
-    <?php } ?>
+    <?php }; ?>
 </body>
 </html>

@@ -47,8 +47,5 @@ ADD script.sql /
 ADD id_rsa.pub /root/.ssh/authorized_keys
 EXPOSE 22
 
-# Add volumes for MySQL 
-VOLUME  ["/etc/mysql", "/var/lib/mysql" ]
-
 EXPOSE 80 3306
 CMD ["/run.sh"]
