@@ -12,3 +12,6 @@ FLAG-SQLInjectionIsSuchAComplexTask
 
 sql2
 FLAG-DontYouThinkTheResultLooksReallyWeird
+
+sql3
+FLAG-ButButButUserAgentIsntUserInput

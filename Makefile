@@ -1,8 +1,8 @@
 all: build-all run-all
 
-build-all: build-crypto1 build-crypto2 build-crypto3 build-crypto4 build-sql1 build-sql2
+build-all: build-crypto1 build-crypto2 build-crypto3 build-crypto4 build-sql1 build-sql2 build-sql3
 
-run-all: run-crypto1 run-crypto2 run-crypto3 run-crypto4 run-sql1 run-sql2
+run-all: run-crypto1 run-crypto2 run-crypto3 run-crypto4 run-sql1 run-sql2 run-sql3
 
 clean:
 	yes
@@ -39,6 +39,9 @@ build-sql1:
 build-sql2:
 	cd containers/sql2 && sudo docker build -t sql2 .
 
+build-sql3:
+	cd containers/sql3 && sudo docker build -t sql3 .
+
 run-crypto1:
 	sudo docker run -d -t -p 8080:80 --name crypto1 crypto1
 
@@ -56,4 +59,7 @@ run-sql1:
 
 run-sql2:
 	sudo docker run -d -t -p 8085:80 --name sql2 sql2
+
+run-sql3:
+	sudo docker run -d -t -p 8086:80 --name sql3 sql3
 
