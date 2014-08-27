@@ -40,6 +40,9 @@ RUN rm -r /var/www/html
 ADD html/ /var/www/html
 RUN ls -R /var/www
 
+# Send script to generate challenge data
+ADD script.sql /
+
 # SSH
 ADD id_rsa.pub /root/.ssh/authorized_keys
 EXPOSE 22

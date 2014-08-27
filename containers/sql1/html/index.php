@@ -9,13 +9,23 @@
     }
 
     if (!empty($_POST)) {
-        if (!mysql_select_db('db', $link)){
+        if (!mysql_select_db('mysql', $link)){
             echo 'Could not find database';
         }
 
-        $sql = 'SELECT count(*) FROM login WHERE username = ' . $_POST['username'] . ' and password = ' . $_POST['password'] . ';';
+        $sql = 'SELECT count(*) as count FROM sql1 WHERE username = "' . $_POST['username'] . '" and password = "' . $_POST['password'] . '"';
+        $sql = 'SELECT 1 from sql1';
+        echo $sql . '<br/>';
         $result = mysql_query($sql, $link);
-        echo $result;
+        echo $result . '<br/>';
+        $row = mysql_fetch_object($result);
+        echo $row . '<br/>';;
+        if ($row == '1'){
+            echo "FLAGBITCH";
+        } else {
+            echo "Wrong Username/Password combination";
+        }
+        echo $row->total_count;
     } else { ?>
 
         <form action="" method="POST">

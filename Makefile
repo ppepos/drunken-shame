@@ -47,4 +47,5 @@ run-crypto4:
 	docker run -d -t -p 8083:80 --name crypto4 crypto4
 
 run-sql1:
-	docker run -d -t -p 8084:80 -v ${PWD}/containers/sql1/data:/var/lib/mysql --name sql1 sql1
+	docker run -d -t -p 8084:80 --name sql1 sql1
+
