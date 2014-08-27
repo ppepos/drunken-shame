@@ -12,20 +12,24 @@
 
     if (!empty($_POST)) {
        $sql = "SELECT * FROM sql1 WHERE username='" . $_POST['username'] . "' and password='" . $_POST['password'] . "'";
-        echo $sql . '<br/>';
-        if ($result = mysql_query($sql) === FALSE){
+        $result = mysql_query($sql) or die("MySQL Error");
+        if ($result === FALSE){
             echo 'Query Failed';
         }
-        echo "<table>\n";
-        echo $line = mysql_num_rows($result);
-        echo "</table>\n";
+        $line = mysql_num_rows($result);
+        if (intval($line) >= 1){
+            echo "FLAG-SQLInjectionIsSuchAComplexTask";
+        } else {
+            echo "Wrong Username / Password combination!";
+        }
     } else { ?>
 
+        <h2>Welcome to the admin login page</h2>
         <form action="" method="POST">
             <label for="username">Username:</label>
-            <input type="text" name="username" value="username"/>
+            <input type="text" name="username" value="username"/><br/>
             <label for="password">Password:</label>
-            <input type="password" name="password" value="password"/>
+            <input type="password" name="password" value="password"/><br/>
             <input type="submit" name="submit" value="login"/>
         </form>
 

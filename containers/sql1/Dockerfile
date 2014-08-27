@@ -43,9 +43,5 @@ RUN ls -R /var/www
 # Send script to generate challenge data
 ADD script.sql /
 
-# SSH
-ADD id_rsa.pub /root/.ssh/authorized_keys
-EXPOSE 22
-
 EXPOSE 80 3306
 CMD ["/run.sh"]
