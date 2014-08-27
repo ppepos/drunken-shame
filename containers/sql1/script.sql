@@ -9,5 +9,5 @@ CREATE TABLE sql1 (
 INSERT INTO sql1
 (username, password)
 VALUES
-("admin", "F0rg3tab0ut1t");
+("admin", "O0pB_Q7CI2e9QHYoRrgT");
 COMMIT;
