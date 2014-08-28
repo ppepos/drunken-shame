@@ -1,0 +1,23 @@
+<head>
+    <title>SFL CTF Scoreboard</title>
+</head>
+<body>
+    <table>
+        <th>
+            <td>Username</td>
+            <td>Score</td>
+        </th>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.score }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br />
+    <br />
+    <form method="post" action="/">
+    <label for="flag-field">Sumbit Flag: </label>
+    <input>
+</body>
+
