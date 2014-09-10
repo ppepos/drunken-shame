@@ -12,3 +12,8 @@ Have fun!
 Special Thanks:
 
  * Tutum for his LAMP stack Docker image.
+
+TODO:
+
+ * Finish the flag submission (askgod)
+ * Fix the some paths in the reverse proxy (apache container)
