@@ -22,7 +22,7 @@ if(isset($_GET['replace']) && isset($_GET['with'])){
 <br />
 
 
-<form method="get" action="/">
+<form method="get" action="#">
     <label> Replace string: </label>
     <input type="text" name="replace"></input><br />
     <label> With: 
