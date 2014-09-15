@@ -41,7 +41,7 @@ kill:
 
 build-master:
 	cd containers/apache && sed -i s/IPADDR/$(ipaddr)/g apache-adagios.conf
-	sudo docker build -t master .
+	cd containers/apache && sudo docker build -t master .
 
 build-askgod:
 	cd containers/askgod && sudo docker build -t askgod .
