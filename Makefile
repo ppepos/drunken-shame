@@ -1,3 +1,5 @@
+ipaddr = 127.0.0.1
+
 all: build-all run-all
 
 build-all: build-master build-intro1 build-intro2 build-crypto1 build-crypto2 build-crypto3 build-crypto4 build-sql1 build-sql2 build-sql3 build-sql4 build-web1 build-web2
@@ -8,6 +10,7 @@ clean:
 	yes
 
 kill:
+	sudo docker kill master
 	sudo docker kill askgod
 	sudo docker kill intro1
 	sudo docker kill intro2
@@ -21,6 +24,7 @@ kill:
 	sudo docker kill sql4
 	sudo docker kill web1
 	sudo docker kill web2
+	sudo docker rm master
 	sudo docker rm askgod
 	sudo docker rm intro1
 	sudo docker rm intro2
@@ -36,7 +40,8 @@ kill:
 	sudo docker rm web2
 
 build-master:
-	cd containers/apache && sudo docker build -t master .
+	cd containers/apache && sed -i s/IPADDR/$(ipaddr)/g apache-adagios.conf
+	sudo docker build -t master .
 
 build-askgod:
 	cd containers/askgod && sudo docker build -t askgod .
@@ -78,10 +83,10 @@ build-web2:
 	cd containers/web2 && sudo docker build -t web2 .
 
 run-master:
-	sudo docker run -d -t -p 80:80 --name master master
+	sudo docker run -d -t -p 81:80 --name master master
 
 run-askgod:
-	sudo docker run -i -t -p 80:80 --name askgod askgod bash
+	sudo docker run -i -t -p 82:80 --name askgod askgod bash
 
 run-intro1:
 	sudo docker run -d -t -p 8078:80 --name intro1 intro1
