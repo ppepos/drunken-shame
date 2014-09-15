@@ -39,7 +39,7 @@
         while($line = mysql_fetch_array($result)){
             echo "<tr>\n";
             echo "<td>" . $line["id"] . "</td>\n";
-            echo "<td><a href=\"/?user=" . $line["username"] . "\">" . $line["username"] . "</a></td>\n";
+            echo "<td><a href=\"?user=" . $line["username"] . "\">" . $line["username"] . "</a></td>\n";
             echo "<td>" . $line["score"] . "</td>\n";
             echo "</tr>\n";
         }
